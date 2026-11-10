@@ -5,5 +5,7 @@
     "workspaceFolder": "/xyz",
     "shutdownAction": "stopCompose",
     "remoteUser": "container-user",
-    
+    "features":  {
+        "ghcr.io/devcontainers/features/docker-in-docker": {}
+    }
 }

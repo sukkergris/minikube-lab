@@ -1,0 +1,26 @@
+FROM debian:13
+
+ENV USERNAME=container-user \
+    HOME_DIR=/home/container-user \
+    DEBIAN_FRONTEND=noninteractive \
+    PATH="/home/container-user/.local/bin:/usr/local/bin:$PATH"
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    git \
+    locales \
+    openssh-client \
+    stow \
+    sudo \
+    zsh \
+    && rm -fr /var/lib/apt/lists/*
+
+ARG USER_UID=1000
+ARG USER_GID=1000
+RUN groupadd --gid $USER_GID $USERNAME && \
+    useradd --uid $USER_UID --gid $USER_GID --create-home --shell /bin/zsh $USERNAME && \
+    echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+ENV LANG=en_US.UTF-8
+USER $USERNAME
+WORKDIR $HOME_DIR
