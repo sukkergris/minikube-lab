@@ -13,7 +13,9 @@ RUN apt-get update && \
     stow \
     sudo \
     zsh \
-    && rm -fr /var/lib/apt/lists/*
+    && rm -fr /var/lib/apt/lists/* \
+    && sed -i 's/^# *\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen \
+    && locale-gen
 
 ARG USER_UID=1000
 ARG USER_GID=1000
