@@ -6,6 +6,9 @@
     "shutdownAction": "stopCompose",
     "remoteUser": "container-user",
     "features":  {
-        "ghcr.io/devcontainers/features/docker-in-docker": {}
-    }
+        "ghcr.io/devcontainers/features/docker-in-docker": {
+            "moby":"false"
+        }
+    },
+    "postCreateCommand": "bash .devcontainer/scripts/post-create.sh"
 }

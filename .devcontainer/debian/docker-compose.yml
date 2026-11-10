@@ -8,7 +8,7 @@ services:
       - minikube-lab-claude:/home/container-user/.claude
       - minikube-lab-gemini:/home/container-user/.gemini
       - minikube-lab-ssh:/home/container-user/.ssh
-      - minikube-lab-sshtemplate:/home/container/user/.sshtemplate
+      - minikube-lab-sshtemplate:/home/container-user/.sshtemplate
     command: sleep infinity
 
 volumes:
