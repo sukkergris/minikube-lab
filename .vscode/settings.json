@@ -1,9 +1,11 @@
 {
+    "cSpell.language": "en,da",
     "cSpell.ignoreWords": [
         "NOPASSWD",
         "sshtemplate"
     ],
     "cSpell.words": [
+        "Dockerfilen",
         "moby",
         "noninteractive"
     ]
