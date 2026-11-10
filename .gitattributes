@@ -1,0 +1,40 @@
+# Normalize line endings across platforms
+* text=auto
+
+# Text files
+*.md text
+*.json text
+*.jsonl text
+*.txt text
+*.html text
+*.css text
+*.py text
+*.ipynb text
+*.toml text
+*.yml text
+*.yaml text
+*.env text
+*.xml text
+Dockerfile* text eol=lf
+*.Dockerfile text eol=lf
+
+# Shell scripts must stay LF on all platforms (run inside the Linux container)
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Windows batch / command files
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binary assets
+*.ico binary
+*.jpg binary
+*.png binary
+*.gif binary
+*.pdf binary
+*.zip binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.otf binary
+*.svg binary

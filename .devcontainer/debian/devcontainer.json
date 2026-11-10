@@ -1,0 +1,9 @@
+{
+    "name": "minikube-lab",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "dev",
+    "workspaceFolder": "/xyz",
+    "shutdownAction": "stopCompose",
+    "remoteUser": "container-user",
+    
+}
