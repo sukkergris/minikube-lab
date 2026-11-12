@@ -5,11 +5,15 @@
         "sshtemplate"
     ],
     "cSpell.words": [
+        "claude",
+        "debian",
         "devcontaineren",
+        "devcontainers",
         "Dockerfilen",
         "dotnet",
         "moby",
         "nginx",
-        "noninteractive"
+        "noninteractive",
+        "openssh"
     ]
 }
