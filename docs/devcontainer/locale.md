@@ -9,7 +9,7 @@ _Hvorfor `Dockerfile.debian` kører `locale-gen`_
 ```dockerfile
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    ...
+    ..."
     locales \
     ...
     && rm -fr /var/lib/apt/lists/* \
@@ -39,8 +39,8 @@ tilbage til `C`-localen, og programmer klager. Det så sådan ud, hver gang
 ```text
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
-	...
-	LANG = "en_US.UTF-8"
+ ...
+ LANG = "en_US.UTF-8"
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 ```

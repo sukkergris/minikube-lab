@@ -5,9 +5,9 @@
     "workspaceFolder": "/xyz",
     "shutdownAction": "stopCompose",
     "remoteUser": "container-user",
-    "features":  {
+    "features": {
         "ghcr.io/devcontainers/features/docker-in-docker": {
-            "moby":"false"
+            "moby": false
         }
     },
     "postCreateCommand": "bash .devcontainer/scripts/post-create.sh"
