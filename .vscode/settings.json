@@ -15,5 +15,8 @@
         "nginx",
         "noninteractive",
         "openssh"
-    ]
+    ],
+    "dotfiles.repository": "git@github.com:sukkergris/devcontainer-dotfiles.git",
+    "dotfiles.targetPath": "~/dotfiles",
+    "dotfiles.installCommand": ".install.sh"
 }
