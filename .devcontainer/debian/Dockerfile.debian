@@ -7,6 +7,8 @@ ENV USERNAME=container-user \
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
     git \
     locales \
     openssh-client \
@@ -24,5 +26,11 @@ RUN groupadd --gid $USER_GID $USERNAME && \
     echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 ENV LANG=en_US.UTF-8
+
+ARG TASK_VERSION=3.54.0
+RUN ARCH="$(dpkg --print-architecture)" && \
+    curl -fsSL "https://github.com/go-task/task/releases/download/v${TASK_VERSION}/task_linux_${ARCH}.tar.gz" \
+    | tar -xy -C /user/local/bin task
+
 USER $USERNAME
 WORKDIR $HOME_DIR
