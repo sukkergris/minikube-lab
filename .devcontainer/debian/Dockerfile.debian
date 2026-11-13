@@ -30,7 +30,7 @@ ENV LANG=en_US.UTF-8
 ARG TASK_VERSION=3.54.0
 RUN ARCH="$(dpkg --print-architecture)" && \
     curl -fsSL "https://github.com/go-task/task/releases/download/v${TASK_VERSION}/task_linux_${ARCH}.tar.gz" \
-    | tar -xy -C /user/local/bin task
+    | tar -xz -C /usr/local/bin task
 
 USER $USERNAME
 WORKDIR $HOME_DIR
