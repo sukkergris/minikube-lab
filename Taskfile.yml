@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+vars:
+  GREETING: Hello, world!
+
+tasks:
+  default:
+    desc: List all available tasks
+    cmds:
+      - task --list-all
+includes:
+  build:
+    taskfile: ./Taskfile.BUILD.yml
+    dir: .

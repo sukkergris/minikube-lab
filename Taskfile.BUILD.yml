@@ -1,0 +1,7 @@
+version: "3"
+
+tasks:
+  build:
+    desc: Build dockerfile
+    cmds:
+      - docker compose -f build/docker-compose.yml build app

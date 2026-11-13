@@ -1,0 +1,6 @@
+services:
+  app:
+    image: theo/zyz/test-debian:latest
+    build:
+      context: ../.devcontainer/debian
+      dockerfile: Dockerfile.debian

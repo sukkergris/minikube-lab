@@ -15,9 +15,31 @@
         "moby",
         "nginx",
         "noninteractive",
-        "openssh"
+        "openssh",
+        "theo"
     ],
     "dotfiles.repository": "git@github.com:sukkergris/devcontainer-dotfiles.git",
     "dotfiles.targetPath": "~/dotfiles",
-    "dotfiles.installCommand": ".install.sh"
+    "dotfiles.installCommand": ".install.sh",
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n"
+            ],
+            "commands": [
+                "explorer.newFile"
+            ]
+        }
+    ]
 }
