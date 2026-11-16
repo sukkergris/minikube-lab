@@ -33,21 +33,44 @@ Tid pr. uge: ca. 20 timer (4 timer om dagen, 5 dage om ugen, jf. [plan.md](plan.
 
 ## Sikkert
 
+- Installere værktøjer via Dockerfile med pinned `ARG` og `TARGETARCH`
+- Oprette, slette og nulstille cluster med kind og egne tasks
+- Version skew: kubectl ±1 minor fra API server; node image bestemmer
+  Kubernetes-versionen
+- Slår selv op i `--help`
+
 ## Usikkert
 
+- Læse fejlbeskeder nedefra (digest-fejlen, `Is a directory`): gentag ved
+  første `kubectl describe`/Events
+- Shell-detaljer: `-o` skal have en fil, ikke en mappe; `chmod` efter download
+- Ikke afprøvet endnu: hvad control plane Pods i `kube-system` laver, og
+  hvorfor en node er `NotReady` lige efter oprettelse
+
 ## Aktiv opgave
-Modul 0, trin 1 (færdigt 2026-11-16): kubectl 1.37.2 og kind 0.33.0 installeret
-via Dockerfile med `TARGETARCH` og pinned `ARG`.
 
-Modul 0, trin 2 (færdigt 2026-11-16): `lab/kind-config.yaml` med node image
-pinned på digest og port 80/443; tasks `lab001:cluster-create/destroy/reset/info`
-og `context-current` virker.
+Modul 0, trin 3 (sidste): autocompletion og `k` alias i zsh (`.zshrc` ligger i
+dotfiles; pak ind i `command -v kubectl`). Accept: `k get no<Tab>` giver
+`nodes`, og `k describe node <Tab>` foreslår `lab-001-kind-control-plane`.
 
-Modul 0, trin 3 (sidste): autocompletion og `k` alias i zsh (dotfiles), samt
-refleksionsspørgsmålene (NotReady lige efter reset; hvad forsvinder ved reset).
+Refleksionsspørgsmål, der mangler svar:
+
+1. Hvorfor var din node `NotReady` og `coredns` `Pending` de første sekunder
+   efter reset? (svar: venter på CNI, `kindnet`)
+2. Hvad er væk efter `cluster-reset`, og hvad overlever? (filerne i `lab/`)
+
+Trin 1 og 2 er færdige: kubectl 1.37.2 og kind 0.33.0 via Dockerfile,
+`lab/kind-config.yaml` med node image pinned på digest og port 80/443, tasks
+`lab001:cluster-create/destroy/reset/info` og `context-current`.
+
+Små løse ender (valgfrit): task til `kubectl get nodes,pods -A`; cluster-navn
+som `vars:` i `Taskfile.LAB001.yml`; kommentaren "Assumes docker" står over
+kubectl i stedet for kind; `scripts/install.sh` er et testscript.
 
 ## Næste gang
-Modul 0: Setup (fortsæt fra "Aktiv opgave")
+
+Start med `task lab001:cluster-create` hvis dit cluster er væk, afslut modul 0
+(trin 3 og de to spørgsmål, ca. 15 min.), og gå så til modul 1: Første Pod.
 
 ## Log
 - 2026-11-16: Session 1 startet. Lab-repo fundet i `/xyz`. Docker-in-Docker kører
@@ -57,3 +80,6 @@ Modul 0: Setup (fortsæt fra "Aktiv opgave")
   `ARG` kører ikke en shell, `>` vs. `-o` vs. `|`, FHS (`/usr/local/bin`),
   version skew (kubectl ±1 minor fra API server; kind vælger node image).
   Bruger selv `--help` til at finde svar.
+- 2026-11-16: Trin 2 færdigt. Cluster `lab-001-kind` oppe på v1.37.0, fandt
+  node image i release notes, løste digest-fejl (manglende tegn), skrev tasks
+  inkl. `cluster-reset` med `task:`-kald. Stoppede før trin 3.
