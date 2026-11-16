@@ -80,6 +80,31 @@ Bemærk:
 Uden ekstra opsætning kan filsøgningen også åbnes med `Ctrl+Shift+P`, hvorefter
 du sletter `>`.
 
+### Spring til en åben fil uden at få en ekstra tab
+
+Som standard åbner Quick Open altid filen i den aktive editor group. Er filen
+allerede åben i en anden gruppe, får du derfor en ekstra tab med samme fil.
+
+Tilføj i _User_ settings på værtsmaskinen:
+
+```json
+"workbench.editor.revealIfOpen": true
+```
+
+Nu springer `Space p` (og Ctrl+P) hen til den tab, der allerede er åben, uanset
+hvilken gruppe den ligger i. Er filen ikke åben, åbnes den som normalt i den
+aktive gruppe.
+
+Bemærk:
+
+- **`workbench.editor.enablePreviewFromQuickOpen` er noget andet.** Den styrer
+  kun, om filen åbnes i preview mode (kursiv titel, som genbruges af næste fil).
+- **Indstillingen ignoreres, når du selv vælger en gruppe,** fx ved at åbne til
+  siden med Ctrl+Enter i Quick Open.
+- **Vil du kun søge blandt åbne filer,** så brug kommandoen
+  `workbench.action.showAllEditorsByMostRecentlyUsed`. Den viser åbne editors
+  på tværs af alle grupper og hopper altid til den eksisterende tab.
+
 ### Fejlsøgning af Vim-mappings
 
 Tilføj `"vim.debug.loggingLevelForConsole": "debug"` midlertidigt. Loggen havner
