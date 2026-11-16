@@ -14,3 +14,6 @@ includes:
   build:
     taskfile: ./Taskfile.BUILD.yml
     dir: .
+  lab001:
+    taskfile: ./Taskfile.LAB001.yml
+    dir: .

@@ -10,5 +10,12 @@
             "moby": false
         }
     },
-    "postCreateCommand": "bash .devcontainer/scripts/post-create.sh"
+    "postCreateCommand": "bash .devcontainer/scripts/post-create.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "task.vscode-task"
+            ]
+        }
+    }
 }

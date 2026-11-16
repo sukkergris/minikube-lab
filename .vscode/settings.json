@@ -16,6 +16,8 @@
         "nginx",
         "noninteractive",
         "openssh",
+        "taskfile",
+        "Taskfile",
         "theo"
     ],
     "dotfiles.repository": "git@github.com:sukkergris/devcontainer-dotfiles.git",

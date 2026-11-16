@@ -1,0 +1,24 @@
+version: "3"
+
+tasks:
+  cluster-create:
+    desc: Create cluster
+    cmds:
+      - kind create cluster --config lab/kind-config.yaml
+  cluster-destroy:
+    desc: Destroy cluster
+    cmds:
+      - kind delete cluster --name lab-001-kind
+  cluster-reset:
+    desc: Reset cluster
+    cmds:
+      - task: cluster-destroy
+      - task: cluster-create
+  cluster-info:
+    desc: Info cluster
+    cmds:
+      - kubectl cluster-info
+  context-current:
+    desc: Get Current Context
+    cmds:
+      - kubectl config current-context
