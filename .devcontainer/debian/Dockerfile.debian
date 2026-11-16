@@ -27,10 +27,25 @@ RUN groupadd --gid $USER_GID $USERNAME && \
 
 ENV LANG=en_US.UTF-8
 
+# Using BuildKit's build in `TARGETARCH` insted of ARCH="$(dpkg --print-architecture)" 
+ARG TARGETARCH
+
 ARG TASK_VERSION=3.54.0
-RUN ARCH="$(dpkg --print-architecture)" && \
-    curl -fsSL "https://github.com/go-task/task/releases/download/v${TASK_VERSION}/task_linux_${ARCH}.tar.gz" \
-    | tar -xz -C /usr/local/bin task
+
+ARG USER_BIN=/usr/local/bin
+
+# -fsSL: (f)ail on HTTP errors, (s)ilent, (S)how error messages, fo(L)low redirects
+RUN curl -fsSL "https://github.com/go-task/task/releases/download/v${TASK_VERSION}/task_linux_${TARGETARCH}.tar.gz" \
+    | tar -xz -C ${USER_BIN} task
+
+# List: https://dl.k8s.io/
+ARG KUBECTL_VERSION=1.37.2
+RUN curl -fsSLo ${USER_BIN}/kubectl "https://dl.k8s.io/v${KUBECTL_VERSION}/bin/linux/${TARGETARCH}/kubectl" && chmod +x ${USER_BIN}/kubectl
+
+
+# Assumes docker is installed. Eg. using DinD
+ARG KIND_VERSION=0.33.0
+RUN curl -fsSLo ${USER_BIN}/kind "https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-linux-${TARGETARCH}" && chmod +x ${USER_BIN}/kind
 
 USER $USERNAME
 WORKDIR $HOME_DIR
