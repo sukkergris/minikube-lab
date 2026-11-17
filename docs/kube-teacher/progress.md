@@ -67,6 +67,18 @@ Små løse ender (valgfrit): task til `kubectl get nodes,pods -A`; cluster-navn
 som `vars:` i `Taskfile.LAB001.yml`; kommentaren "Assumes docker" står over
 kubectl i stedet for kind; `scripts/install.sh` er et testscript.
 
+## Sidespor
+
+Parkeringsplads for ting uden for opgaven. Regel: **nu**, hvis det blokerer
+opgaven eller kan klares i samme rebuild; ellers **parkér** og tag det i
+slutningen af en session.
+
+- [ ] nvim 0.12.x i Dockerfile (i gang 2026-11-17, samme rebuild som kubectl
+  completion; asset-navn `x86_64` vs. `TARGETARCH=amd64`, arkiv med
+  `bin/lib/share`)
+- [ ] Valgfrit: kubectl-URL med `/release/`, `USER_BIN` → `LOCAL_BIN`,
+  stavning i kommentaren om `TARGETARCH`, checksum-verifikation
+
 ## Næste gang
 
 Start med `task lab001:cluster-create` hvis dit cluster er væk, afslut modul 0
